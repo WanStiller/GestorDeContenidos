@@ -20,7 +20,7 @@ include 'includes/config.php';
 ?>
 
 
-<div class="container">
+<div class="container" style="margin-top: 6em">
 <div class="row">
 <div class="col-md-9">
 <?php 
@@ -50,10 +50,12 @@ while ($row=mysqli_fetch_array($query)) {
 ?>
 <div class="card mb-4">
 <div class="card-body">
-
-<h4 class="card-title"><?php echo htmlentities($row['posttitle']);?></h4>
+	<style type="text/css">
+		a:hover {text-decoration: none;}
+	</style>
+<a href="article.php?nid=<?php echo htmlentities($row['pid'])?>"><h4 class="card-title"><?php echo htmlentities($row['posttitle']);?></h4></a>
 <p style="font-size: 0.9em"><?php echo htmlentities($row['description']);?></p>
-<a href="article.php?nid=<?php echo htmlentities($row['pid'])?>" class="btn btn-primary btn-sm">Ampliar Contenido</a>
+<!--<a href="article.php?nid=<?php echo htmlentities($row['pid'])?>" class="btn btn-primary btn-sm">Ampliar Contenido</a>-->
 </div>
 <div class="card-footer text-muted" style="font-size: 0.8em;">
 Publicado el <?php echo htmlentities($row['postingdate']);?>

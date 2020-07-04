@@ -2,34 +2,28 @@
 session_start();
 include 'includes/config.php';
 $here="Portada"; ?>
-
-
 <?php //Muestra datos de usuario
   if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){/**/} else {require("includes/datos_usuario.php");}
 ?>
-
-
-
 <?php require_once 'includes/special.php'; ?>
 <body>
 <?php //require('includes/header.php'); ESTA LINEA ESTABLECE EL MENU SI ES LOGIN O NO
   if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){include("includes/header.php");} else {require("includes/header-log.php");}
 ?>
-<div class="container">   
+<div class="container" style="margin-top: 6em">
 <div class="row">
 <div class="col-md-9">
-
 <?php //Aviso al usuario Login ono
   if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){include("includes/aviso-portada.php");} else {/*echo("Nada Aun")*/;}
 ?>
 <?php //Portada
 $pagetype='portada';
-$query=mysqli_query($con,"select PageTitle,Description from tblpages where PageName='$pagetype'");
+$query=mysqli_query($con,"select PageTitle,Description, Vistas, UpdationDate from tblpages where PageName='$pagetype'");
+$query2=mysqli_query($con,"Update tblpages set Vistas=Vistas+1 where PageName='$pagetype'");
 while($row=mysqli_fetch_array($query))
 {
 ?>
-<span><?php //echo htmlentities($row['PageTitle'])?></span>
-<?php echo $row['Description'];?>
+<!--<p class="text-white"><?php //echo $row['Vistas']; //Contador de Visitas?></p>-->
 <?php } ?>
 <div class="row">
 <?php 
@@ -63,7 +57,7 @@ while ($row=mysqli_fetch_array($query)) {
 <a href="article.php?nid=<?php echo htmlentities($row['pid'])?>" class="btn btn-info btn-sm" style="margin-bottom: 0.5em">Leer M&aacute;s</a>
 </div>
 <div class="card-footer text-muted" style="font-size: 0.8em;text-align: center;">
-Publicado el <?php echo htmlentities($row['postingdate']);?> <b>Visitas</b> <?php echo htmlentities($row['views']);?>
+Publicado el <?php echo htmlentities($row['postingdate']);?> <b>Lecturas</b> <?php echo htmlentities($row['views']);?>
 </div>
 </div>
 </div>
@@ -81,16 +75,6 @@ Publicado el <?php echo htmlentities($row['postingdate']);?> <b>Visitas</b> <?ph
 </ul>
 </div>
 <div class="col-md-3">
-
-
-<a href="hoja-de-vida.php" style="text-decoration: none;" class=" d-none d-sm-none d-md-block">
-<div class="row bg-dark" style="margin-left: 0px;margin-right: 0px;box-sizing: border-box;padding: 0.7em;margin-bottom: 1em">
-	<div style="color: white;padding: 1em;display: inline-block;position: relative;width: 50%"><h6>Ver mi HOJA DE VIDA</h6></div>
-	<div style="display: inline-block;position: relative;width: 50%;text-align: center;padding: 1em"><img src="images/hojadevida.png" style="width: 100%;max-width: 100px;"></div>
-</div>
-</a>
-
-
 <?php include('includes/sidebar.php');?>
 </div>
 </div>

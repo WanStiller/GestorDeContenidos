@@ -21,7 +21,7 @@ $here="Formulario de Registro"; ?>
 ?>
 
 
-<div class="container">   
+<div class="container" style="margin-top: 6em">  
 <div class="row">
 <div class="col-md-4"></div>
 <div class="col-md-4">

@@ -22,8 +22,8 @@ include('includes/config.php');
 
 
 
-<div class="container">
-<div class="row">
+<div class="container" style="margin-top: 6em">
+    <div class="row">
 <div class="col-md-9">
 
 <?php

@@ -16,8 +16,8 @@ $here="Registro"; ?>
   if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){include("includes/header.php");} else {require("includes/header-log.php");}
 ?>
 
-<div class="container">   
-<div class="row">
+<div class="container" style="margin-top: 6em">
+  <div class="row">
 <div class="col-md-4"></div>
 <div class="col-md-4">
 	<form style="margin-top: 25%;margin-bottom: 25%;color: gray;padding: 5%" action="action/login.php" method="post">
