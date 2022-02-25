@@ -2,7 +2,7 @@
 	define('DB_SERVER', 'localhost');
 	define('DB_USER', 'root');
 	define('DB_PASS', '');
-	define('DB_NAME', 'desesperado');
+	define('DB_NAME', 'blogphp');
 	$con=@mysqli_connect(DB_SERVER, DB_USER, DB_PASS, DB_NAME);
     if(!$con){
         @die("<h2 style='text-align:center'>Imposible conectarse a la base de datos! </h2>".mysqli_error($con));
